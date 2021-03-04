@@ -1,7 +1,3 @@
-<p align="center">
-  Vite Generate Exports
-</p>
-
 # vite-plugin-generate-exports
 
 > ⚠️ This plugin is experimental and is subject to change. It is not currently recommended that you use this plugin.
