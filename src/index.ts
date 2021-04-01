@@ -1,5 +1,6 @@
 import { basename, relative, dirname } from 'path'
 import type { Plugin } from 'vite'
+import { normalizePath } from 'vite'
 import { parse as _parse } from '@babel/parser'
 import fg from 'fast-glob'
 import { UserOptions } from './types'
@@ -22,7 +23,7 @@ function VitePluginGenerateExports(options: UserOptions): Plugin {
         options.patterns?.forEach(({ matchTokens, path }) => {
           const regex = new RegExp(`${matchTokens[0]}[\\s\\S]*?${matchTokens[1]}`, 'im')
 
-          const files = fg.sync(path, {
+          const files = fg.sync(normalizePath(path), {
             ignore: ['node_modules'],
             onlyFiles: true,
             cwd: root,
@@ -32,7 +33,7 @@ function VitePluginGenerateExports(options: UserOptions): Plugin {
           const generatedExports = files.map((file) => {
             const name = basename(file).split('.')[0]
             const relativePath = relative(dirname(id), file)
-            return `export { default as ${name} } from './${relativePath}'`
+            return `export { default as ${name} } from './${normalizePath(relativePath)}'`
           }).join('\n')
 
           if (regex.test(code))
