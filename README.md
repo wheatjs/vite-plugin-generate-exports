@@ -26,7 +26,7 @@ export default defineConfig({
       patterns: [
         {
           matchTokens: ['// Start_Exports', '// End_Exports'],
-          files: 'src/components/**/*.vue'
+          path: 'src/components/**/*.vue'
         }
       ]
     })
@@ -57,7 +57,7 @@ export default defineConfig({
       patterns: [
         {
           matchTokens: ['// Start_Exports', '// End_Exports'],
-          files: 'src/components/**/*.vue'
+          path: 'src/components/**/*.vue'
         }
       ]
     }),
