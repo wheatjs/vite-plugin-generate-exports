@@ -16,7 +16,7 @@ function VitePluginGenerateExports(options: UserOptions): Plugin {
       root = _config.root
     },
     async transform(code: string, id: string) {
-      const fileRegex = /\.(ts)$/
+      const fileRegex = /\.(ts|js)$/
 
       // Check if file is a vue file
       if (fileRegex.test(id)) {
